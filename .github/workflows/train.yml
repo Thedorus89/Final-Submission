@@ -22,5 +22,5 @@ jobs:
 
       - name: Run Training
         run: |
-          cd MLProject
+          cd Workflow-CI/MLProject
           python modelling.py
