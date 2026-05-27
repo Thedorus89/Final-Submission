@@ -4,7 +4,6 @@ from fastapi.responses import Response
 from prometheus_client import Counter, Histogram, generate_latest
 
 import time
-import random
 
 app = FastAPI()
 
@@ -30,7 +29,7 @@ def home():
 
     start = time.time()
 
-    prediction = random.randint(0, 1)
+    prediction = 1
 
     PREDICTION_COUNT.inc()
 
@@ -42,6 +41,7 @@ def home():
 
 @app.get("/metrics")
 def metrics():
+
     return Response(
         generate_latest(),
         media_type="text/plain"
