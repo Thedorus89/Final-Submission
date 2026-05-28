@@ -13,9 +13,6 @@ mlflow.sklearn.autolog()
 
 df = pd.read_csv("dataset_preprocessing.csv")
 
-df = df.drop(columns=["Name", "Ticket"])
-
-
 X = df.drop("Survived", axis=1)
 y = df["Survived"]
 
