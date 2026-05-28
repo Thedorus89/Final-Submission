@@ -3,6 +3,7 @@ from fastapi.responses import Response
 
 from prometheus_client import Counter, Histogram, generate_latest
 
+import requests
 import time
 
 app = FastAPI()
@@ -22,6 +23,8 @@ LATENCY = Histogram(
     "Prediction Latency"
 )
 
+MODEL_API_URL = "http://127.0.0.1:8000/predict"
+
 @app.get("/")
 def home():
 
@@ -29,11 +32,20 @@ def home():
 
     start = time.time()
 
-    prediction = 1
+    response = requests.get(MODEL_API_URL)
+
+    prediction = response.json()
 
     PREDICTION_COUNT.inc()
 
     LATENCY.observe(time.time() - start)
+
+    return prediction
+
+@app.get("/predict")
+def predict():
+
+    prediction = 1
 
     return {
         "prediction": prediction
