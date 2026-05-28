@@ -2,6 +2,8 @@ name: Train ML Model
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   train:
@@ -14,13 +16,13 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12
+          python-version: '3.12'
 
       - name: Install Dependencies
         run: |
           pip install mlflow==2.19.0 pandas numpy scikit-learn==1.5.2
 
-      - name: Run Training
+      - name: Run MLProject
         run: |
-          cd Workflow-CI/MLProject
-          python modelling.py
+          cd MLProject
+          mlflow run .
