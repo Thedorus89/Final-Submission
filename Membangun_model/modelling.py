@@ -42,11 +42,4 @@ with mlflow.start_run():
 
     print("Accuracy:", acc)
 
-    mlflow.log_metric("accuracy", acc)
-
-    mlflow.sklearn.log_model(
-        sk_model=model,
-        artifact_path="model"
-    )
-
 print("Training selesai")
