@@ -7,7 +7,7 @@ import mlflow
 import mlflow.sklearn
 
 
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
 
 mlflow.sklearn.autolog()
 
